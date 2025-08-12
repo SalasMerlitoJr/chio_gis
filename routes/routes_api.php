@@ -10,6 +10,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\Api\CityDashboardController;
 
+
 // Public route (no authentication needed)
 Route::post('login', [AuthController::class, 'login']);
 

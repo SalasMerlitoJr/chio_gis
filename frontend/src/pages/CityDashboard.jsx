@@ -40,6 +40,7 @@ const CityDashboard = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+      
       <h1>City Dashboard</h1>
 
       {/* Diagnoses Table */}
