@@ -101,8 +101,8 @@ export default function Login() {
           </h2>
           <p style={{ marginBottom: 30 }}>
             {isSignUp
-              ? 'Developed by Merlito Betonio Salas Jr. Rawrr'
-              : 'Developed by Merlito Betonio Salas Jr. Rawrr '}
+              ? 'Developed by MemaSaba. Rawrr'
+              : 'Developed by MeMaSaba. Rawrr '}
           </p>
           <button
             onClick={() => setIsSignUp(!isSignUp)}
