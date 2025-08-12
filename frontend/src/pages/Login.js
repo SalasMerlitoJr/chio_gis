@@ -101,8 +101,8 @@ export default function Login() {
           </h2>
           <p style={{ marginBottom: 30 }}>
             {isSignUp
-              ? 'Developed by MemaSaba. Rawrr'
-              : 'Developed by MeMaSaba. Rawrr '}
+              ? 'Developed by MeMaSaBa. Rawrr'
+              : 'Developed by MeMaSaBa. Rawrr '}
           </p>
           <button
             onClick={() => setIsSignUp(!isSignUp)}
@@ -123,7 +123,7 @@ export default function Login() {
         </div>
         {/* Forms */}
         <div style={{
-          width: '50%',
+          width: '80%',
           padding: '40px 30px',
           display: 'flex',
           alignItems: 'center',

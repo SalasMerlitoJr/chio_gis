@@ -10,7 +10,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div style={{ padding: 20 }}>
-        <h2>City Health Insurance Office - Geographical Information System</h2>
+        <h2 style={{ textAlign: 'center' }}>City Health Insurance Office - Geographical Information System</h2>
         <nav>
           <Link to='/'>Home</Link>{" | "}
           <Link to='/city-dashboard'>City Dashboard</Link>{" | "}

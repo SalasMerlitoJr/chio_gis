@@ -15,6 +15,17 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+const badgeStyle = {
+  display: 'inline-block',
+  padding: '2px 12px',
+  borderRadius: '12px',
+  fontWeight: 500,
+  fontSize: '0.95em',
+  background: '#e8f5e9',
+  color: '#388e3c',
+  border: '1px solid #c8e6c9',
+};
+
 const CityDashboard = () => {
   const [diagnoses, setDiagnoses] = useState([]);
   const [barangays, setBarangays] = useState([]);
@@ -40,41 +51,63 @@ const CityDashboard = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      
-      <h1>City Dashboard</h1>
+      <h1>Cagayan de Oro City Dashboard</h1>
 
       {/* Diagnoses Table */}
-      <h2>Top 10 Diagnoses</h2>
-      <table border="1" cellPadding="6" style={{ borderCollapse: "collapse", width: "100%" }}>
+      <h2 style={{ textAlign: 'center' }}>Top 10 Diagnoses</h2>
+      <table
+        style={{
+          borderCollapse: "separate",
+          borderSpacing: 0,
+          width: "100%",
+          background: "#fff",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          borderRadius: 12,
+          overflow: "hidden",
+          marginBottom: 24
+        }}
+      >
         <thead>
-          <tr>
-            <th>Diagnosis</th>
-            <th>Cases</th>
+          <tr style={{ background: "#f5f6fa" }}>
+            <th style={{ padding: "12px 16px", textAlign: "left", fontWeight: 600 }}>Diagnosis</th>
+            <th style={{ padding: "12px 16px", textAlign: "left", fontWeight: 600 }}>Cases</th>
           </tr>
         </thead>
         <tbody>
           {diagnoses.map((item, index) => (
-            <tr key={index}>
-              <td>{item.diagnosis}</td>
-              <td>{item.count}</td>
+            <tr
+              key={index}
+              style={{
+                background: index % 2 === 0 ? "#fafbfc" : "#fff",
+                borderBottom: "1px solid #f0f0f0"
+              }}
+            >
+              <td style={{ padding: "12px 16px" }}>{item.diagnosis}</td>
+              <td style={{ padding: "12px 16px" }}>
+                <span style={badgeStyle}>{item.count}</span>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Map */}
-      <h2 style={{ marginTop: "20px" }}>City Map</h2>
-      <MapContainer center={[8.4542, 124.6319]} zoom={12} style={{ height: "500px", width: "100%" }}>
+      <h2 style={{ marginTop: "20px" }}>Cagayan de Oro City Map</h2>
+      <MapContainer
+        center={[8.4542, 124.6319]} // Cagayan de Oro City center
+        zoom={12.5} // Slightly closer city view
+        style={{ height: "500px", width: "100%" }}
+      >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
 
         {/* Barangay Centroids */}
         {barangays.map((b, idx) => (
           <Marker key={idx} position={[b.lat, b.lng]}>
             <Popup>
-              <strong>{b.name}</strong><br />
+              <strong>{b.name}</strong>
+              <br />
               Barangay Center
             </Popup>
           </Marker>
@@ -84,7 +117,8 @@ const CityDashboard = () => {
         {patients.map((p, idx) => (
           <Marker key={idx} position={[p.lat, p.lng]}>
             <Popup>
-              <strong>{p.name}</strong><br />
+              <strong>{p.name}</strong>
+              <br />
               Diagnosis: {p.diagnosis}
             </Popup>
           </Marker>
