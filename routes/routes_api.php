@@ -39,4 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/city/dashboard', [CityDashboardController::class, 'getTopDiagnoses']);
     Route::get('/barangays', [CityDashboardController::class, 'getBarangays']);
     Route::get('/patients', [CityDashboardController::class, 'getPatients']);
+
+  // Signup ni boss
+    Route::post('register', [AuthController::class, 'register']);
 });
